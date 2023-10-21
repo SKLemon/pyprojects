@@ -1,4 +1,4 @@
-#Made as part of the Building As I Learn repositor on Github - Created/Submitted 10/20/2023#
+#Made as part of the Building As I Learn repository on Github - Created/Submitted 10/20/2023#
 
 total_bill = float(input("What was the total bill? $"))
 num_people = float(input("How many people to split the bill? "))
