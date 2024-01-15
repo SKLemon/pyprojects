@@ -1,6 +1,7 @@
+#Created as a part of the BAIL repository on Github. Created 01/14/2024
 
 #Getting input from user to check if a year is a leap year or not
-year = int(input("Type in a year to check if it is a leap year or not"))
+year = int(input("Type in a year to check if it is a leap year or not\n"))
 
 # The rules are:
 # If a year is divisible by 4 it is a leap year

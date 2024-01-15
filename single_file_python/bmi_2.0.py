@@ -1,3 +1,5 @@
+#Created as a part of the BAIL repository on Github. Created 01/24/2024
+
 #Ask user for their height and weight - Input always converts to str so reconvert to proper data types
 height = float(input("Enter your height in meters, e.g, 1.55: "))
 weight = int(input("Enter your weight in kilograms e.g, 72: "))
