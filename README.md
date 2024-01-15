@@ -1,2 +1,2 @@
-# refactored-sniffle
+# BAIL Repository #
 A repository of projects built in Python. Built alongside tutorials and self-taught material. From "Hello World" to wherever this takes me... 
