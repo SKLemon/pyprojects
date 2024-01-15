@@ -1,3 +1,5 @@
+#Created as a part of the BAIL repository on Github. Created 01/24/2024
+
 # Multiple choice adventure mini-game set in the terminal.
 # 
 print('''

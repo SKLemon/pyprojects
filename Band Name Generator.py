@@ -1,4 +1,4 @@
-#Created as a part of the Building As I Learn repository on Github. Created/Submitted 10/20/2023
+#Created as a part of the BAIL repository on Github. Created/Submitted 10/20/2023
 
 #1. Create a greeting for your program.
 print("Welcome to the Band Name Generator")
