@@ -1,3 +1,7 @@
+#Created as a part of the BAIL repository on Github. Created 12/02/2024
+
+# A cipher to encode or decode messages! Inspired by Julius Caesar, who the cipher is named after
+
 from art import logo_caesar
 print(logo_caesar)
 
