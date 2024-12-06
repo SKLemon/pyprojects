@@ -1,3 +1,7 @@
+#Created as a part of the BAIL repository on Github. Created 12/02/2024
+
+# Because everybody makes a calculator...right? This mini project dabbles in functions and explores while loops a bit more
+
 from art import logo
 
 # Defining the operations into functions of the calculator below
