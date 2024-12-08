@@ -1,28 +1,74 @@
+#Created as a part of the BAIL repository on Github. Created 12/05/2024
 
-
-
-# Logo imports
 import random
-from art import logo_higherlower, vs_higherlower
+from art import logo_higherlower, vs_higherlower as vs
 from game_data import data
-print(logo_higherlower)
+print(logo_higherlower) # ASCII art
 
-# Comparison line print statement
-# Importing the data and randomizing the choice
-comparison_A = random.choice(data) #only runs once when game starts, then gets overidden everytime if user_answer is correct
-print(f"Compare A: {comparison_A["name"]}, a {comparison_A["description"]}, from {comparison_A["country"]}")
+# After review, this does not adhere to DRY principle if there are multiple data sets later on. Ex multiple lines of data_c and so forth.
+
+# To make this efficient for re-useability later on:
+# 1) define a helper function that converts the dictionary entries into seperate variables
+# 2) Use an f string to return individual variables formatted how you prefer.
+
+# Example below:
+#   
+# def format_data(dataset):
+#     dataset_name = dataset["name"]
+#     dataset_descr = dataset["description"]
+#     dataset_country = dataset["country"]
+#     return f"{dataset_name}, a {dataset_descr}, from, {dataset_country}."
+
+# Then when you need to call your statement
+
+#print(f"Compare A: {format_data(comparison_A)}")
+#print(f"Compare B: {format_data(comparison_B)}")
 
 
-while True:
-    comparison_B = random.choice(data)
-    print(vs_higherlower)
-    print(f"Compare B: {comparison_B["name"]}, a {comparison_B["description"]}, from {comparison_B["country"]}")
-    user_guess = input("Who has more followers? Type 'A' or 'B': ").lower()
 
-    break
-# User choice and way to keep track of score
-# Score does not empty until the game is ended. Does not repeat automatically once game is ended
+def comparison(data_a, data_b,):
+    """data_a: Data set 1 to compare.\n 
+    data_b: Data set 2 to compare.\n 
+    This function prints out the name, description, and country from the dict in (data)"""
 
-# Seems the user's previous choice gets pulled into comparison A.
-# Only on the first run does the first comparison list get randomly chosen... comparison_b gets randomly chosen everytime
+    print(f"Compare A: {data_a['name']}, a {data_a['description']}, from {data_a['country']}")
+    print(vs)
+    print(f"Compare B: {data_b['name']}, a {data_b['description']}, from {data_b['country']}")
 
+def correct_randomizer(data_a,data_b,data):
+    """Checks comparison() data sets and rewrites the first one (data_a) on a correct answer, while randomizing the second dataset (data_b)"""
+
+    data_a = data_b
+    data_b = random.choice(data)
+    return data_a, data_b
+
+# First run - every comparison option is randomized and zeroed the score
+user_score = 0
+comparison_A = random.choice(data)
+comparison_B = random.choice(data)
+game_win = True
+
+comparison(comparison_A, comparison_B) # First run print. Both data_sets are randomized
+
+while game_win == True:
+    # This sets the correct answer by checking whcih data set has the higher follower count
+    if comparison_A ["follower_count"] > comparison_B["follower_count"]: # type: ignore
+        correct_answer = "a"
+    else:
+        correct_answer = "b"
+    
+    user_guess = input("Who has more followers? Type 'A' or 'B': ").lower() # user input stored into a var
+    print("\n" * 20)
+    print(logo_higherlower)
+
+# Below is game winning criteria.
+    if user_guess != correct_answer:
+        game_win = False
+        print(f"Sorry, that's wrong. Final Score: {user_score}")
+
+    else:
+        user_score += 1
+        print(f"You're right! Current score: {user_score}\n")
+        comparison_A, comparison_B = correct_randomizer(comparison_A,comparison_B,data)
+        comparison(comparison_A, comparison_B)
+        
