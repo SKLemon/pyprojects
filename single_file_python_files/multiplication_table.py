@@ -9,5 +9,7 @@
 user_input = input("Enter a number: ")
 print(user_input)
 
-for i in range(1, 11):
+# The upper range of this for loop will not be accessible. 
+# I would have to use len(item to loop through) + 1. This is why the upper range is 11
+for i in range(1, 11):     
     print(user_input, "x", i, "=", int(user_input) * i)

@@ -1,6 +1,7 @@
 #Created as a part of the BAIL repository on Github. Created 01/14/2024
 
-#This was completed during a demo of the 100 Days of Python Course. Did not do this myself
+#This was completed during a demo of the 100 Days of Python Course. Did not do this myself.
+
 print("Welcome to the rollercoaster!")
 height = int(input("What is your height in cm? "))
 bill = 0
