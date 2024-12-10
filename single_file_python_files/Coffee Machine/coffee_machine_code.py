@@ -4,9 +4,11 @@ from data import MENU, resources
 # COMPLETED TODO's:
 # TODO : 1) Print a report
 # TODO : 2) Check resources are sufficient
+# TODO : 3) Process coins
+# TODO : 4) Check transaction successful
 
 def format_report(resources):
-    """Prints the formatted report
+    """Prints the formatted report.
 
     Args:
         resources (dict): values of 'water', 'coffee', 'milk'
@@ -19,7 +21,7 @@ def format_report(resources):
         print(f"{ingredient.title()}: {quantity}{unit}")
 
 def resource_check(resources,required_ingredients):
-    """This functions checks a dictionary against another and checks if you have enough
+    """Checks items in a dictionary against another dict and compares.
 
     Args:
         resources (dict): Resources currently on hand
@@ -27,36 +29,54 @@ def resource_check(resources,required_ingredients):
     Returns:
         bool: True is resources are sufficient, False otherwise
     """
-    
+
     for ingredient,quantity in required_ingredients.items():
         if ingredient not in resources or resources[ingredient] < quantity:
             print(f"Sorry, there is not enough {ingredient}")
             return False
-        return True
-# Function to get each coin placed in by user, then output total_amount of coins to match up with cost
-def coins():
-    cash_in = {}
-    quarters = 0
-    dimes = 0
-    nickles = 0
-    pennies = 0
-    total_amount = 0
-    cash_in[quarters] = int(input("How many quarters?: "))
-    cash_in[dimes] = int(input("How many dimes?: "))
-    cash_in[nickles] = int(input("How many nickles?: "))
-    cash_in[pennies] = int(input("How many pennies?: "))
-    
-    for key,val in cash_in.items():
-        print(f"{key}: {val}")
-        total_amount += val
+    return True
 
-    return total_amount
+def resource_removal(resources,required_ingredients):
+    """Removes the items used from a total.
+
+    Args:
+        resources (dict): _description_
+        required_ingredients (dict): _description_
+    """
+    for ingredient,quantity in required_ingredients.items():
+        resources[ingredient] -= quantity
 
 
-accumulated_money = 0.00
+def coins(cash_in):
+    """Asks user the QUANTITY of coins they are putting in, and outputs its equivalent in money value
+
+    Args:
+        cash_in (dict): Dictionary of coins and they're respective currency amounts
+
+    Returns:
+        accumulated_money (float): Returns the running total amount of money th_description_
+    """
+    total_coin_input = 0
+
+    for currency,value in cash_in.items():
+        user_cash = int(input(f"How many {currency}?: "))
+        total_coin_input += (value * user_cash)
+
+    return total_coin_input
+
+##########################################################
 
 machine_on = True
+
+profit = 0
+cash_in = {"quarters": 0.25,
+            "dimes": 0.10,
+            "nickles": 0.05,
+            "pennies": 0.01,
+            }
+
 while machine_on == True:
+
     user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if user_input in ["espresso", "latte", "cappuccino"]:
 
@@ -66,24 +86,26 @@ while machine_on == True:
         if enough_ingredients == True:
 
             print("Please insert coins.")
-            total_amount = coins()
-            print (total_amount)
 
-            # If statement on enough coins matching the cost of the drink
-            print("Making your drink.... please wait")
-            time.sleep(3)
-            print("*DING* Enjoy!")
+            accumulated_money = float(coins(cash_in))
+
+            required_money = MENU[user_input]["cost"]
+
+            if accumulated_money < required_money:
+                print("Sorry, that's not enough money. Money refunded.")
+
+            elif accumulated_money >= required_money:
+                change = accumulated_money - required_money
+
+                print(f"Here is ${change:.2f} in change")
+
+                profit += required_money
+
+                resource_removal(resources,required_ingredients)
 
     elif user_input == "off":
         machine_on = False
 
     elif user_input == "report":
         format_report(resources)
-        print(f"Money: ${accumulated_money}")
-
-
-
-# TODO: 3) Process coins
-# 3a) Coin operated only. Checks how much money was put in using amount of quarters, nickels, dimes, and pennies
-# TODO: 4) Check transaction successful
-# 5) Make coffee, and keep track of amount of money made
+        print(f"Money: ${profit}")
