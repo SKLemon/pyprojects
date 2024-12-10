@@ -8,3 +8,5 @@ if result == 1:
   print("Heads")
 else:
   print("Tails")
+
+# random.choice() will randomly select an option from an iterable inside the brackets
