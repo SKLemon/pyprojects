@@ -65,7 +65,7 @@ rgb_colours = random_colours()
 #
 #         tim.teleport(x_new_dot,y_starting_point)
 #         x_new_dot += dot_spacing
-#### THE ABOVE CODE DOES NOT WORK. WILL EVENTUALLY FIND A FIX ###
+#### TODO: THE ABOVE CODE DOES NOT WORK. WILL EVENTUALLY FIND A FIX ###
 
 
 #### THE BELOW CODE WAS WRITTEN BY https://www.udemy.com/user/marnus-van-wijk-2/ ####
