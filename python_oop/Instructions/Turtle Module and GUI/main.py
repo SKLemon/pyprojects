@@ -99,94 +99,29 @@ for sides in range(3,11):
 
 
 # Drawing the random walk #
+def random_colours():
+    """Randomly generates colors in rgb format and appends to a list. Can increase or decrease range to get more or less colours
 
-colour_palette = [
-    "snow",
-    "ghost white",
-    "white smoke",
-    "gainsboro",
-    "floral white",
-    "old lace",
-    "linen",
-    "antique white",
-    "papaya whip",
-    "blanched almond",
-    "bisque",
-    "peach puff",
-    "navajo white",
-    "lemon chiffon",
-    "mint cream",
-    "azure",
-    "alice blue",
-    "lavender",
-    "lavender blush",
-    "misty rose",
-    "dark slate gray",
-    "dim gray",
-    "slate gray",
-    "light slate gray",
-    "gray",
-    "light grey",
-    "midnight blue",
-    "navy",
-    "cornflower blue",
-    "dark slate blue",
-    "slate blue",
-    "medium slate blue",
-    "light slate blue",
-    "medium blue",
-    "royal blue",
-    "blue",
-    "dodger blue",
-    "deep sky blue",
-    "sky blue",
-    "light sky blue",
-    "steel blue",
-    "light steel blue",
-    "light blue",
-    "powder blue",
-    "pale turquoise",
-    "dark turquoise",
-    "medium turquoise",
-    "turquoise",
-    "cyan",
-    "light cyan",
-    "cadet blue",
-    "medium aquamarine",
-    "aquamarine",
-    "dark green",
-    "dark olive green",
-    "dark sea green",
-    "sea green",
-    "medium sea green",
-    "light sea green",
-    "pale green",
-    "spring green",
-    "lawn green",
-    "medium spring green",
-    "green yellow",
-    "lime green",
-    "yellow green",
-    "forest green",
-    "olive drab",
-    "dark khaki",
-    "khaki",
-    "pale goldenrod",
-    "light goldenrod yellow",
-    "light yellow",
-    "yellow",
-    "gold",
-    "light goldenrod",
-    "goldenrod",
-    "dark goldenrod",
-    "rosy brown",
-    "indian red",
-    "saddle brown",
-    "sandy brown",
-    "dark salmon",
-    "salmon",
-    "light salmon",
-]
+    Return (list): Returns the list
+    """
+    colour_list = []
+
+    """
+
+    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple fact that randomizing colours looks cooler
+
+    """
+    for i in range(1, 21):
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        new_colour = r, b, g
+        colour_list.append(new_colour)
+
+    return colour_list
+
+
+rgb_colours = random_colours()
 
 # Increasing pen thickness and speed
 
@@ -196,11 +131,10 @@ directions = [90, 180, 270, 360]
 
 # Randomizing the walk of a turtle #
 
-
 for i in range(0, 101):
     tim.forward(random.randint(10, 100))
     tim.setheading(random.choice(directions))
-    tim.pencolor(random.choice(colour_palette))  # Randomizing the colour pallet
+    tim.pencolor(random.choice(rgb_colours))  # Randomizing the colour pallet
 
 screen = Screen()
 screen.exitonclick()
