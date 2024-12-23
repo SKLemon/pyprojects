@@ -37,4 +37,4 @@ print(user_2.following)
 # user_1.username = "Angela - Second attribute created from object
 
 # Repeating the above for, example a 100 different students is prone to error and tedious repetition.
-# Constructors come into play. Shown on line 3.
+# Constructors come into play. Shown on line 4.
