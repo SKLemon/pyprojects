@@ -108,7 +108,7 @@ def random_colours():
 
     """
 
-    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple fact that randomizing colours looks cooler
+    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple opinion that randomizing colours looks cooler
 
     """
     for i in range(1, 21):
