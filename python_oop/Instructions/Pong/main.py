@@ -19,3 +19,42 @@ Paddles are tracked using keyboard keys (up or down)
 Will need the screen set up, the ball and paddle physics, scoreboard to be calculated and added when scored on
 
 """
+from turtle import Screen
+from paddle import Paddle
+from ball import Ball
+import time
+
+screen = Screen()
+screen.title("Pong")
+screen.bgcolor("black")
+screen.setup(width=800, height=600)
+screen.tracer(0)
+
+top_edge = screen.canvheight - 20
+bottom_edge = -screen.canvheight + 20
+
+r_paddle = Paddle((350, 0))
+l_paddle = Paddle((-350, 0))
+ball = Ball()
+
+screen.update()
+screen.listen()
+
+screen.onkey(r_paddle.up, "Up")
+screen.onkey(r_paddle.down, "Down")
+
+screen.onkey(l_paddle.up, "w")
+screen.onkey(l_paddle.down, "s")
+
+game_on = True
+
+while game_on:
+    if top_edge > ball.ycor() > bottom_edge:
+        ball.move()
+        screen.update()
+        time.sleep(0.1)
+    else:
+        game_on = False
+        screen.update()
+
+screen.exitonclick()

@@ -1,8 +1,6 @@
 # Created as a part of BAIL repository on github. Created 12/19
 
-"""
 # Requirements and Progress:
-
 # ✓ Create a snake body [DONE]
 #   - Created 3 squares on screen
 #   - Implemented basic movement
@@ -17,22 +15,22 @@
 # ✓ Create a scoreboard [DONE]
 #   - Add score display
 #   - Update score on food collision
-# ✓ Detect collision with wall [DONE]
+
+# Remaining TODOs:
+# 4. Detect collision with wall
 #   - Add wall boundaries
 #   - Implement game over on wall collision
-# ✓ Detect collision with tail [DONE]
+# 5. Detect collision with tail
 #   - Add self-collision detection
 #   - Implement game over on tail collision
 
-"""
 import time
 from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 
-
-SCREEN_REFRESH = 0.05
+SCREEN_REFRESH = 0.08
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -40,13 +38,9 @@ screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-X_EDGE = screen.canvwidth - 90
-Y_EDGE = screen.canvheight - 10
-
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
-
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -59,28 +53,9 @@ while game_on:
     time.sleep(SCREEN_REFRESH)
     screen.update()
     snake.move()
-    # Detect collision with food
     if snake.head.distance(food) < 15:
         food.new_location()
         snake.extend()
         scoreboard.increase_score()
-
-    # Detect collision with wall
-    if (
-        snake.head.xcor() > X_EDGE
-        or snake.head.xcor() < -X_EDGE
-        or snake.head.ycor() > Y_EDGE
-        or snake.head.ycor() < -Y_EDGE
-    ):
-        game_on = False
-        scoreboard.clear()
-        scoreboard.game_over()
-
-    # Detect collision with tail
-    for segment in snake.segments[1:]:
-        if snake.head.distance(segment) < 10:
-            game_on = False
-            scoreboard.clear()
-            scoreboard.game_over()
 
 screen.exitonclick()
