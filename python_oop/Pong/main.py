@@ -49,12 +49,18 @@ screen.onkey(l_paddle.down, "s")
 game_on = True
 
 while game_on:
+    ball.move()
+
     if top_edge > ball.ycor() > bottom_edge:
-        ball.move()
         screen.update()
         time.sleep(0.1)
+
+    elif ball.distance(r_paddle) > 10 or ball.distance(l_paddle) > 10:
+        ball.bounce_paddle()
+
     else:
-        game_on = False
+        ball.bounce()
         screen.update()
+
 
 screen.exitonclick()
