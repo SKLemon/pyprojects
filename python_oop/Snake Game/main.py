@@ -74,13 +74,13 @@ while game_on:
     ):
         game_on = False  # End the game
         scoreboard.clear()  # Clear the scoreboard
-        scoreboard.game_over()  # Display the game over message
+        scoreboard.reset()
 
     # Detect collision with tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_on = False  # End the game
             scoreboard.clear()  # Clear the scoreboard
-            scoreboard.game_over()  # Display the game over message
+            scoreboard.reset()
 
 screen.exitonclick()  # Exit the game when the screen is clicked
