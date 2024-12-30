@@ -31,39 +31,40 @@ from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 
-
 SCREEN_REFRESH = 0.05
 
 screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.title("Snake Game")
-screen.tracer(0)
+screen.setup(width=600, height=600)  # Set up the screen size
+screen.bgcolor("black")  # Set the background color to black
+screen.title("Snake Game")  # Set the window title
+screen.tracer(0)  # Turn off automatic screen updates
 
-X_EDGE = screen.canvwidth - 90
-Y_EDGE = screen.canvheight - 10
+X_EDGE = screen.canvwidth - 90  # Define the horizontal boundary
+Y_EDGE = screen.canvheight - 10  # Define the vertical boundary
 
-snake = Snake()
-food = Food()
-scoreboard = Scoreboard()
+snake = Snake()  # Create a snake object
+food = Food()  # Create a food object
+scoreboard = Scoreboard()  # Create a scoreboard object
 
-
-screen.listen()
-screen.onkey(snake.up, "Up")
-screen.onkey(snake.down, "Down")
-screen.onkey(snake.left, "Left")
-screen.onkey(snake.right, "Right")
+screen.listen()  # Listen for keyboard input
+screen.onkey(snake.up, "Up")  # Bind the up arrow key to the snake's up method
+screen.onkey(snake.down, "Down")  # Bind the down arrow key to the snake's down method
+screen.onkey(snake.left, "Left")  # Bind the left arrow key to the snake's left method
+screen.onkey(
+    snake.right, "Right"
+)  # Bind the right arrow key to the snake's right method
 
 game_on = True
 while game_on:
-    time.sleep(SCREEN_REFRESH)
-    screen.update()
-    snake.move()
+    time.sleep(SCREEN_REFRESH)  # Pause the game for a short period
+    screen.update()  # Update the screen
+    snake.move()  # Move the snake
+
     # Detect collision with food
     if snake.head.distance(food) < 15:
-        food.new_location()
-        snake.extend()
-        scoreboard.increase_score()
+        food.new_location()  # Move the food to a new location
+        snake.extend()  # Extend the snake
+        scoreboard.increase_score()  # Increase the score
 
     # Detect collision with wall
     if (
@@ -72,15 +73,15 @@ while game_on:
         or snake.head.ycor() > Y_EDGE
         or snake.head.ycor() < -Y_EDGE
     ):
-        game_on = False
-        scoreboard.clear()
-        scoreboard.game_over()
+        game_on = False  # End the game
+        scoreboard.clear()  # Clear the scoreboard
+        scoreboard.game_over()  # Display the game over message
 
     # Detect collision with tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_on = False
-            scoreboard.clear()
-            scoreboard.game_over()
+            game_on = False  # End the game
+            scoreboard.clear()  # Clear the scoreboard
+            scoreboard.game_over()  # Display the game over message
 
-screen.exitonclick()
+screen.exitonclick()  # Exit the game when the screen is clicked

@@ -1,3 +1,4 @@
+# List of dictionaries containing quiz questions and answers
 question_data = [
     {
         "type": "boolean",

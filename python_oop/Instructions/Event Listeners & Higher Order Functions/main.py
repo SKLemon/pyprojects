@@ -9,12 +9,15 @@ def move_forwards():
     tim.forward(10)
 
 
-screen.listen()  # This allows the module to listen for events/actions to occur. Bindings are needed after this line of code, usually in the form of a function that is activated.
+# This allows the module to listen for events/actions to occur. Bindings are needed after this line of code, usually in the form of a function that is activated.
+screen.listen()
+
+# This line binds the spacebar to activate the move_forwards function everytime you press the spacebar.
+# Best practice is to use keyword arguments instread of positional arguments
 screen.onkey(
     key="space",
-    fun=move_forwards,  # Best practice is to use keyword arguments instread of positional arguments
-)  # This line binds the spacebar to activate the move_forwards function everytime you press the spacebar.
-
+    fun=move_forwards,
+)
 # Higher Order Functions #
 
 """

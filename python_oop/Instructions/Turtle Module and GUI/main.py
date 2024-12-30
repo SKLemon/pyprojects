@@ -12,7 +12,7 @@ tim.color("blue2")
 tim.shape("classic")
 
 # Drawing a square #
-
+# Uncomment the following lines to draw a square
 # for i in range(4):
 #     tim.forward(100)
 #     tim.left(90)
@@ -57,7 +57,7 @@ Downloadable packages online. They get installed in a virtual env folder built i
 """
 
 # Drawing a dashed line #
-
+# Uncomment the following lines to draw a dashed line
 # while tim.pos() != (100.00,0.00):
 #     tim.pendown()
 #     tim.forward(5)
@@ -82,7 +82,7 @@ for sides in range(3,11):
 """
 
 # # Below is functional and what I ended up making the first time around #
-
+# Uncomment the following lines to draw different shapes
 # def create_shape(shape_sides):
 #     for i in range(shape_sides):
 #         tim.left(360 / shape_sides)
@@ -107,9 +107,7 @@ def random_colours():
     colour_list = []
 
     """
-
     UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple opinion that randomizing colours looks cooler
-
     """
     for i in range(1, 21):
         r = random.randint(0, 255)
@@ -121,20 +119,20 @@ def random_colours():
     return colour_list
 
 
+# Generate a list of random colors
 rgb_colours = random_colours()
 
 # Increasing pen thickness and speed
-
 tim.speed(10)
 tim.width(10)
 directions = [90, 180, 270, 360]
 
 # Randomizing the walk of a turtle #
-
 for i in range(0, 101):
     tim.forward(random.randint(10, 100))
     tim.setheading(random.choice(directions))
     tim.pencolor(random.choice(rgb_colours))  # Randomizing the colour pallet
 
+# Keep the screen open until clicked
 screen = Screen()
 screen.exitonclick()

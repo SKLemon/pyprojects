@@ -30,7 +30,7 @@ class Snake:
         self.shape = shape
         self.colour = colour
         self.__create_snake__()
-        self.head = self.segments[0]
+        self.head = self.segments[0]  # The head of the snake is the first segment
 
     def __create_snake__(self):
         """Create the initial snake with multiple segments.
@@ -47,7 +47,7 @@ class Snake:
             segment = Turtle(self.shape)
             segment.penup()
             segment.color(self.colour)
-            segment.goto(x=-i * self.distance_from_head, y=0)
+            segment.goto(x=-i * self.distance_from_head, y=0)  # Position each segment
             self.segments.append(segment)
 
     def move(self):
@@ -60,7 +60,6 @@ class Snake:
 
         This creates a smooth, continuous movement where all segments follow the head's path.
         """
-
         # Move each segment to the position of the segment in front of it
         for snake in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[snake - 1].xcor()
@@ -94,5 +93,7 @@ class Snake:
         segment = Turtle(self.shape)
         segment.penup()
         segment.color(self.colour)
-        segment.goto(self.segments[-1].xcor(), self.segments[-1].ycor())
+        segment.goto(
+            self.segments[-1].xcor(), self.segments[-1].ycor()
+        )  # Position new segment
         self.segments.append(segment)
