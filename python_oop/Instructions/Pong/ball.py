@@ -10,9 +10,8 @@ class Ball(Turtle):
         self.resizemode("user")
         self.shapesize(1, 1)
         self.color("white")
-        self.x_distance = 10
-        self.y_distance = 10
-        self.penup()
+        self.x_distance = 15
+        self.y_distance = 15
 
     def move(self):
         new_x = self.xcor() + self.x_distance
@@ -24,7 +23,3 @@ class Ball(Turtle):
 
     def bounce_paddle(self):
         self.x_distance *= -1
-
-    def reset_position(self):
-        self.goto(0, 0)
-        self.bounce_paddle()
