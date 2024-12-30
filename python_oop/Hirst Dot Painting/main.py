@@ -27,7 +27,7 @@ def random_colours():
     """
     """
 
-    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple fact that randomizing colours looks cooler
+    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple opinion that randomizing colours looks cooler
 
     """
     for i in range(1, 11):
@@ -51,25 +51,7 @@ rgb_colours = random_colours()
 """
 
 
-# dot_spacing = 50
-#
-# x_starting_point = dot_spacing - screen.canvwidth
-# y_starting_point = dot_spacing - screen.canvheight
-#
-# tim.teleport(x_starting_point,y_starting_point)
-#
-# def dot_x():
-#     x_new_dot = x_starting_point + dot_spacing
-#     y_new_line = y_starting_point + dot_spacing
-#     for dots in range(-250,250,50):
-#
-#         tim.teleport(x_new_dot,y_starting_point)
-#         x_new_dot += dot_spacing
-#### TODO: THE ABOVE CODE DOES NOT WORK. WILL EVENTUALLY FIND A FIX ###
-
-
 #### THE BELOW CODE WAS WRITTEN BY https://www.udemy.com/user/marnus-van-wijk-2/ ####
-### IT's too good not to use... ###
 
 tim.penup()
 tim.hideturtle()

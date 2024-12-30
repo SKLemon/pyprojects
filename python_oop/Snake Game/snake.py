@@ -25,6 +25,7 @@ class Snake:
             segments (list): List of turtle objects forming the snake
         """
         self.distance_from_head = 20
+        self.count = 0
         self.segments = []
         self.starting_snakes = starting_snakes
         self.shape = shape
@@ -43,11 +44,16 @@ class Snake:
 
         The segments are created from left to right, with the head being the rightmost segment.
         """
-        for i in range(self.starting_snakes):
+        for _ in range(self.starting_snakes):
             segment = Turtle(self.shape)
             segment.penup()
             segment.color(self.colour)
+<<<<<<< HEAD
             segment.goto(x=-i * self.distance_from_head, y=0)  # Position each segment
+=======
+            segment.setx(self.count * self.distance_from_head)
+            self.count -= 1
+>>>>>>> test
             self.segments.append(segment)
 
     def move(self):
@@ -60,13 +66,17 @@ class Snake:
 
         This creates a smooth, continuous movement where all segments follow the head's path.
         """
+<<<<<<< HEAD
+=======
+
+        self.head.forward(MOVE_DISTANCE)  # Moves head forward
+
+>>>>>>> test
         # Move each segment to the position of the segment in front of it
         for snake in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[snake - 1].xcor()
             new_y = self.segments[snake - 1].ycor()
             self.segments[snake].goto(new_x, new_y)
-
-        self.head.forward(MOVE_DISTANCE)  # Moves head forward
 
     def up(self):
         """Moves the snake upwards without reversing."""

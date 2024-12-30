@@ -1,8 +1,6 @@
 # Created as a part of BAIL repository on github. Created 12/19
 
-"""
 # Requirements and Progress:
-
 # ✓ Create a snake body [DONE]
 #   - Created 3 squares on screen
 #   - Implemented basic movement
@@ -17,14 +15,15 @@
 # ✓ Create a scoreboard [DONE]
 #   - Add score display
 #   - Update score on food collision
-# ✓ Detect collision with wall [DONE]
+
+# Remaining TODOs:
+# 4. Detect collision with wall
 #   - Add wall boundaries
 #   - Implement game over on wall collision
-# ✓ Detect collision with tail [DONE]
+# 5. Detect collision with tail
 #   - Add self-collision detection
 #   - Implement game over on tail collision
 
-"""
 import time
 from turtle import Screen
 from snake import Snake
