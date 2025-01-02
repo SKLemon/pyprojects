@@ -99,3 +99,8 @@ class Snake:
             self.segments[-1].xcor(), self.segments[-1].ycor()
         )  # Position new segment
         self.segments.append(segment)
+
+    def reset(self):
+        self.segments.clear()
+        self.__create_snake__()
+        self.head = self.segments[0]

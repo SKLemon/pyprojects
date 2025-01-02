@@ -1,9 +1,7 @@
 from turtle import Turtle
 
 ALIGN = "Center"
-FONT_NAME = "Arial"
-FONT_TYPE = "normal"
-FONT_SIZE = 20
+FONT = ("Arial", 20, "normal")
 
 
 class Scoreboard(Turtle):
@@ -23,7 +21,7 @@ class Scoreboard(Turtle):
         self.write(
             f"Score: {self.l_score}",
             align=ALIGN,
-            font=(FONT_NAME, FONT_SIZE, FONT_TYPE),
+            font=FONT,
         )
 
     def create_right(self):
@@ -31,7 +29,7 @@ class Scoreboard(Turtle):
         self.write(
             f"Score: {self.r_score}",
             align=ALIGN,
-            font=(FONT_NAME, FONT_SIZE, FONT_TYPE),
+            font=FONT,
         )
 
     def create_middle(self):
