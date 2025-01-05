@@ -1,3 +1,5 @@
+# Created as a part of the BAIL Repository... Unsure when it was originally created, but final edits completed 01/04
+
 from data import question_data
 from question_model import Question
 from quiz_brain import QuizBrain
