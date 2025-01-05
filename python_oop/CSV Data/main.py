@@ -25,4 +25,6 @@ with open("./weather_data.csv") as data_file:  # Opens the file
     #       temperatures.append(int(row[1]))
     # print(temperatures)  # Prints the list
 
-import pandas  # Importing and installing pandas library
+""" All of the above is to open the file and extract simple numerical values from the file... Very cumbersome. Much easier to use the pandas framework """
+
+import pandas  # Importing and installing pandas library from pip is required
