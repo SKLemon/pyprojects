@@ -1,4 +1,4 @@
-#!/home/snowyp/repos/pyprojects/.venv/bin/python3
+#!/home/snowyp/repos/pyprojects/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
