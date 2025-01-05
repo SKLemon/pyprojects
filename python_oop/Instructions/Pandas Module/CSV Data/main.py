@@ -32,10 +32,20 @@ with open("./weather_data.csv") as data_file:  # Opens the file
 import pandas as pd  # Importing and installing pandas library from pip is required
 
 data_set = pd.read_csv(
-    "/home/snowyp/repos/pyprojects/python_oop/CSV Data/weather_data.csv"
+    "/home/snowyp/repos/pyprojects/python_oop/Instructions/Pandas Module/CSV Data/weather_data.csv"
 )
 
-# pd.read imports the information in a file and returns a pandas dataframe. Placed into a variable for furrther processing
-# data_set.head(N) Returns the first N rows of the Data Frame. Also provided a tail() method, used to show the last N rows of the Data Frame
+# pd.read imports the information in a file and returns a pandas DataFrame. Placed into a variable here for further processing.
+# data_set.head(N) Returns the first N rows of the Data Frame. Also provided a tail() method, used to show the last N rows of the Data Frame.
 
 print(data_set.head(3))  # --> Returns the first three rows
+
+# DataFrame is equivalent to a table in excel, and Series is equivalent to a list.
+# Can convert DataFrame objects to different pythonic data sets (dictionary, Series into lists, etc)
+
+data_dict = (
+    data_set.to_dict()
+)  # This converts the DataFrame object into a dictionary and places it into a variable
+
+
+print(data_dict)
