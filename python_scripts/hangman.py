@@ -3,6 +3,7 @@ import hangman_words
 
 from art import logo_hangman
 from art import hangman_stages
+
 lives = 6
 print(logo_hangman)
 
@@ -19,7 +20,9 @@ correct_letters = []
 
 while not game_over:
 
-    print(f"****************************{lives}/6 LIVES LEFT****************************")
+    print(
+        f"****************************{lives}/6 LIVES LEFT****************************"
+    )
     guess = input("Guess a letter: ").lower()
 
     display = ""
@@ -41,7 +44,9 @@ while not game_over:
         if lives == 0:
             game_over = True
 
-            print(f"***********************YOU LOSE**********************\n The correct word was {chosen_word}")
+            print(
+                f"***********************YOU LOSE**********************\n The correct word was {chosen_word}"
+            )
 
     if "_" not in display:
         game_over = True

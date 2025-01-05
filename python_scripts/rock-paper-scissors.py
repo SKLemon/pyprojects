@@ -5,46 +5,56 @@
 # Rock Paper Scissors, chosen at random by the computer. Need to import "random"
 import random
 
-#Insert ASCII Art below and place them in variables to get called when needed
+# Insert ASCII Art below and place them in variables to get called when needed
 
-rock = '''
+rock = """
     _______
 ---'   ____)
       (_____)
       (_____)
       (____)
 ---.__(___)
-'''
-paper = '''
+"""
+paper = """
     _______
 ---'   ____)____
           ______)
           _______)
          _______)
 ---.__________)
-'''
-scissors = '''
+"""
+scissors = """
     _______
 ---'   ____)____
           ______)
        __________)
       (____)
 ---.__(___)
-'''
-choices = [rock, paper, scissors] # Assigns the ASCII art above into table format for index call
+"""
+choices = [
+    rock,
+    paper,
+    scissors,
+]  # Assigns the ASCII art above into table format for index call
 
 # Get User's input
-user_input = int(input("Choose Rock (0), Paper (1), or Scissors (2)\n")) #Converted to int as it will print a string
+user_input = int(
+    input("Choose Rock (0), Paper (1), or Scissors (2)\n")
+)  # Converted to int as it will print a string
 
-#Update: Fixing below code a bit with a while loop
-while user_input >=3 or user_input < 0:
-    user_input = int(input("Invalid choice. Choose Choose Rock (0), Paper (1), or Scissors (2)\n")
+# Update: Fixing below code a bit with a while loop
+while user_input >= 3 or user_input < 0:
+    user_input = int(
+        input("Invalid choice. Choose Choose Rock (0), Paper (1), or Scissors (2)\n")
+    )
 
 choices_user = choices[user_input]
-print(choices[user_input]) # Uses the int taken from user_input to call the list index of the choices... Because the user input happens to be the same as a list index.
+print(
+    choices[user_input]
+)  # Uses the int taken from user_input to call the list index of the choices... Because the user input happens to be the same as a list index.
 
 # Randomize computer input
-computer_input = random.randint(0,2)
+computer_input = random.randint(0, 2)
 print(f"Computer chose:")
 
 choices_computer = choices[computer_input]

@@ -1,11 +1,40 @@
-#Created as a part of the BAIL repository on Github. Created 12/02/2024
+# Created as a part of the BAIL repository on Github. Created 12/02/2024
 
 # A cipher to encode or decode messages! Inspired by Julius Caesar, who the cipher is named after
 
 from art import logo_caesar
+
 print(logo_caesar)
 
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+]
+
 
 def caesar(original_text, shift_amount, encode_or_decode):
     output_text = ""
@@ -35,5 +64,7 @@ while user_repeat == "yes":
 
     caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
 
-    user_repeat = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
+    user_repeat = input(
+        "Type 'yes' if you want to go again. Otherwise, type 'no'.\n"
+    ).lower()
 print("Good bye")

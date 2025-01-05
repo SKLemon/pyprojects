@@ -29,8 +29,13 @@ with open("./weather_data.csv") as data_file:  # Opens the file
 
 """ All of the above is to open the file and extract simple numerical values from the file... Very cumbersome. Much easier to use the pandas framework """
 
-import pandas as p # Importing and installing pandas library from pip is required
+import pandas as pd  # Importing and installing pandas library from pip is required
 
-data = p.read_csv("~/repos/pyprojects/python_oop/CSV\Data/weather_data.csv")
+data_set = pd.read_csv(
+    "/home/snowyp/repos/pyprojects/python_oop/CSV Data/weather_data.csv"
+)
 
-print(data)
+# pd.read imports the information in a file and returns a pandas dataframe. Placed into a variable for furrther processing
+# data_set.head(N) Returns the first N rows of the Data Frame. Also provided a tail() method, used to show the last N rows of the Data Frame
+
+print(data_set.head(3))  # --> Returns the first three rows

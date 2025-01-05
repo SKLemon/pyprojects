@@ -1,20 +1,25 @@
 from data import MENU, resources
 
+
 def format_report(resources):
     """Prints the formatted report.
 
     Args:
         resources (dict): values of 'water', 'coffee', 'milk'
     """
-    for ingredient, quantity in resources.items(): # Extracts the key, value pair from a dict
-        if ingredient in ['water','milk']:
+    for (
+        ingredient,
+        quantity,
+    ) in resources.items():  # Extracts the key, value pair from a dict
+        if ingredient in ["water", "milk"]:
             unit = "ml"
         else:
             unit = "g"
 
         print(f"{ingredient.title()}: {quantity}{unit}")
 
-def resource_check(resources,required_ingredients):
+
+def resource_check(resources, required_ingredients):
     """Checks items in a dictionary against another dict and compares.
 
     Args:
@@ -24,20 +29,21 @@ def resource_check(resources,required_ingredients):
         bool: True is resources are sufficient, False otherwise
     """
 
-    for ingredient,quantity in required_ingredients.items():
+    for ingredient, quantity in required_ingredients.items():
         if ingredient not in resources or resources[ingredient] < quantity:
             print(f"Sorry, there is not enough {ingredient}")
             return False
     return True
 
-def resource_removal(resources,required_ingredients):
+
+def resource_removal(resources, required_ingredients):
     """Removes the items used from a total.
 
     Args:
         resources (dict): _description_
         required_ingredients (dict): _description_
     """
-    for ingredient,quantity in required_ingredients.items():
+    for ingredient, quantity in required_ingredients.items():
         resources[ingredient] -= quantity
 
 
@@ -53,25 +59,27 @@ def coins(cash_in):
     total_coin_input = 0
     print("Please insert coins.")
 
-    for currency,value in cash_in.items():
+    for currency, value in cash_in.items():
         user_cash = int(input(f"How many {currency}?: "))
-        total_coin_input += (value * user_cash)
+        total_coin_input += value * user_cash
 
     return total_coin_input
+
 
 ##########################################################
 
 machine_on = True
 
 profit = 0
-cash_in = {"quarters": 0.25,
-            "dimes": 0.10,
-            "nickles": 0.05,
-            "pennies": 0.01,
-            }
+cash_in = {
+    "quarters": 0.25,
+    "dimes": 0.10,
+    "nickles": 0.05,
+    "pennies": 0.01,
+}
 
 while machine_on == True:
-    #Awaits user input, 2 hidden functions ('off', and 'report')
+    # Awaits user input, 2 hidden functions ('off', and 'report')
     user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
     if user_input in ["espresso", "latte", "cappuccino"]:
@@ -81,7 +89,9 @@ while machine_on == True:
 
         if enough_ingredients == True:
 
-            accumulated_money = float(coins(cash_in)) # Asks for coin input only if there are enough ingredients
+            accumulated_money = float(
+                coins(cash_in)
+            )  # Asks for coin input only if there are enough ingredients
             required_money = MENU[user_input]["cost"]
 
             if accumulated_money < required_money:
@@ -92,7 +102,7 @@ while machine_on == True:
                 change = accumulated_money - required_money
                 print(f"Here is ${change:.2f} in change")
                 profit += required_money
-                resource_removal(resources,required_ingredients)
+                resource_removal(resources, required_ingredients)
 
     elif user_input == "off":
         machine_on = False
