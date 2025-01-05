@@ -1,3 +1,5 @@
+# Created as a part of the BAIL Repository for instructional and reference purposes... Unsure when it was originally created, but final edits completed 01/04
+
 """
 
 Using the standard file system in Python to read from and write to a file.
