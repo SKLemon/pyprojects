@@ -47,5 +47,4 @@ data_dict = (
     data_set.to_dict()
 )  # This converts the DataFrame object into a dictionary and places it into a variable
 
-
-print(data_dict)
+temp_list = data_set["temp"].to_list() # --> This converts the "temperature" Series into a list and places it into a variable
