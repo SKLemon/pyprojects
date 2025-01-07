@@ -32,7 +32,7 @@ with open("./weather_data.csv") as data_file:  # Opens the file
 import pandas as pd  # Importing and installing pandas library from pip is required
 
 data_set = pd.read_csv(
-    "/home/snowyp/repos/pyprojects/python_oop/Instructions/Pandas Module/CSV Data/weather_data.csv"
+    "python_oop/Instructions/Pandas Module/CSV Data/Instructional/weather_data.csv"
 )
 
 # pd.read imports the information in a file and returns a pandas DataFrame. Placed into a variable here for further processing.
@@ -67,9 +67,12 @@ print(f"The max value using the Series method is: {data_set['temp'].max()}")
 
 """
 When working with pandas its easy to get data from columns just by using the label of the first row "temperature", "condition" as an argument when calling the data set etc
-Above, we used square bracket notation to identify the Series... We can also just call the attribute matching the label of the column itself... Example: data_set.temperature
+Above, we used square bracket notation to identify the Series... We can also just call the attribute matching the label of the column itself...
+Example: data_set.temperature
+
 Pandas converts the header rows into attributes automatically. These are type sensitive...
 data_set.Temperature (note the capital "T") will not work, as there is no column with the Temperature (capital T) label.
+
  """
 # Getting data from an individual row
 
@@ -111,6 +114,4 @@ data_table = pd.DataFrame(data_dict)
 # Converts the dictionary above into a DataFrame usable by pandas
 
 # Can save the file and output to .csv format. Needs path location
-data_table.to_csv(
-    "/home/snowyp/repos/pyprojects/python_oop/Instructions/Pandas Module/CSV Data/new_csv.csv"
-)
+data_table.to_csv("./new_csv.csv")
