@@ -59,7 +59,7 @@ while len(correct_guesses) < len(states_list):
         t.goto(state_coords.x.item(), state_coords.y.item())
         t.write(answer_state)
         t.home()
-
+    # Conditional to check for exit keyword and to export remaining States to csv
     if answer_state == "Exit":
         missing_states = []
         for each_state in states_list:
