@@ -61,10 +61,11 @@ while len(correct_guesses) < len(states_list):
         t.home()
     # Conditional to check for exit keyword and to export remaining States to csv
     if answer_state == "Exit":
-        missing_states = []
-        for each_state in states_list:
-            if each_state not in correct_guesses:
-                missing_states.append(each_state)
+        missing_states = [
+            each_state
+            for each_state in states_list
+            if each_state not in correct_guesses
+        ]
         pd.DataFrame(missing_states).to_csv(
             "/home/snowyp/repos/pyprojects/python_oop/US States/states_to_learn.csv"
         )
