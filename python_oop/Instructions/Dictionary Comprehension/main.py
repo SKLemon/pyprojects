@@ -91,8 +91,10 @@ student_dict = {
 
 import pandas as pd
 
-student_dataframe = pd.DataFrame(student_dict)  # Creating the DatFrame
+# Creating the DatFrame
+student_dataframe = pd.DataFrame(student_dict)
 print(student_dataframe)
+#  This can also be created in several different ways
 # Loop through a dataframe is possible using the same syntax as regular ol Python, using the below.
 
 # for key, value in student_dataframe.items():
