@@ -114,22 +114,16 @@ You are going to create a list called result which contains the numbers that are
 e.g. if file1.txt contained:
 
 1
-
 2
-
 3
 
 and file2.txt contained:
 
 2
-
 3
-
 4
 
 result = [2, 3]
-
-
 
 IMPORTANT:  The output should be a list of integers and not strings!
 
@@ -153,8 +147,9 @@ with open("./file2.txt", mode="r") as files2:
 # The solution above is what I wrote...and based on the instructions it is not incorrect.
 # It returns pairwise matches, which essentially compares every item in one list against every item in another list.
 # If they match, it returns them.
-# This is why the extra "3" was being returned, as it matches the "3" twice. Once at the beginning, then again at line 8 in file 2.
-#  This is also known as nested comprehension
+# This is why the extra "3" was being returned, as it matches the "3" twice.
+# Once at the beginning, then again at line 8 in file 2.
+# This is also known as nested comprehension
 
 # The below code is correct as well, as it only returns if there is a match at least once. It does not take into account multiple matches
 result = [int(num) for num in file1_data if num in file2_data]
