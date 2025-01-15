@@ -15,7 +15,7 @@ Adopted by Python for simplicity and cross-platform compatibility
 Allows quick and easy GUI development without additional dependencies
 """
 
-# ! Creating Windows and Labels with Tkinter ! #
+# * Creating Windows and Labels with Tkinter
 import tkinter
 
 # Create from class Tk()
@@ -34,7 +34,9 @@ label = tkinter.Label(text="Label Test", font=("Arial", 24, "bold"))
 # .pack function is a geometry/window management system. Identifies the location of items and where they should be placed on the screen.
 # Allows automatic window sizing based on the items (labels, functions, programs etc) inside it.
 # Has additional default values, similiar to keyword arguments, which can be changed when calling the .pack() function.
-
+"""
+label.pack(side="right", expand=False)
+"""
 * To create default values in a function:
 Example:
 def my_function(a=1, b=2, c=3)
@@ -45,9 +47,33 @@ def my_function(a=1, b=2, c=3)
 1) Possible to place a different value in each variable outside of their default values (my_function(a=4, b=65, c=4))
 2) or use their defaults by calling the function as is (my_function)
 3) or selecting which values get changed (my_function(23,43) - Will place values 23 and 43 into a and b)
+
+* ### Unlimited Positional Arguments
+Also possible to have unlimited arguments inside a function.
+For example, take the function below:
+def add (n1, n2):
+    return n1 + n2
+
+? Problem: We need to allow any number of inputs to be added in.
+
+? Solution: A for loop inside the function
+    def add(*args) --> This function can take any number of inputs
+        for n in args: --> This runs through each of those inputs
+            print(n) --> This will do something with each of those inputs.
+! This will be tested out in test.py in the same folder
+
+* Unlimited Keyword Argument (Many Keyword Arguments) (AKA **kwargs)
+? Problem: A) What if we need to refer to arguments by their keyword? B) Do something with them?
+? Solution: A) See Syntax below. B) A standard dictionary loop function to do something with the key,value pairs inside the args.
+def calculate (**kwargs): --> A function that takes in many arbitrary keywords with their own assigned values and returns a dictionary with those values
+    pass
+
+calculate(add = 3, multiply = 5) --> add is now a key, and 3 is its value.
+- **kwargs can be looped through the standard dictionary loop (key,value in kwarg.items())
+! The rest of this is tested out in the test.py
+
 """
 
-label.pack(side="right", expand=False)
 
 # Keeps window open
 window.mainloop()
