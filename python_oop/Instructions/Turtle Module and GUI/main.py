@@ -35,9 +35,9 @@ forward(100)
 
 This is best avoided as it doesn't explain the source of where the blueprint/item or whatever came from.
 
-BEST PRACTICE:
-##### If you're using a module 3x or more, use 'from' import #####
-##### Using it less? use 'import' #####
+! BEST PRACTICE:
+! If you're using a module 3x or more, use 'from' import #####
+! Using it less? use 'import' #####
 
 """
 
@@ -52,7 +52,8 @@ timmy = t.Turtle
 # Installing Modules #
 """
 There only a handful of modules bundled with Python. The rest need to be installed using python packages.
-Downloadable packages online. They get installed in a virtual env folder built in the python project
+Downloadable packages online. It is recommended to install them in a virtual env folder built in the python project.
+MORE INFO: https://docs.python.org/3/library/venv.html
 
 """
 
@@ -81,7 +82,7 @@ for sides in range(3,11):
 
 """
 
-# # Below is functional and what I ended up making the first time around #
+# * Below is functional and what I ended up making the first time around
 # Uncomment the following lines to draw different shapes
 # def create_shape(shape_sides):
 #     for i in range(shape_sides):
@@ -107,7 +108,9 @@ def random_colours():
     colour_list = []
 
     """
-    UPDATE: Got DISPLAY var working so PIL and colorgram module can work now. Below function remains due to the simple opinion that randomizing colours looks cooler
+    UPDATE: Got DISPLAY VAR working.
+    Look into XLaunch and XMing to solve the issue on your end if your development is hosted on a different machine than the one you are typing on.
+    Below function remains due to my opinion that randomizing colours looks cooler
     """
     for i in range(1, 21):
         r = random.randint(0, 255)
