@@ -30,7 +30,23 @@ window.minsize(width=500, height=300)
 # Labelling. This sets the font, text etc.
 label = tkinter.Label(text="Label Test", font=("Arial", 24, "bold"))
 
-# .pack function is a geometry management system. Identifies the location of items and where should be placed on the screen
+"""
+# .pack function is a geometry/window management system. Identifies the location of items and where they should be placed on the screen.
+# Allows automatic window sizing based on the items (labels, functions, programs etc) inside it.
+# Has additional default values, similiar to keyword arguments, which can be changed when calling the .pack() function.
+
+* To create default values in a function:
+Example:
+def my_function(a=1, b=2, c=3)
+    Do something with a,
+    Then something with b,
+    then something with c
+
+1) Possible to place a different value in each variable outside of their default values (my_function(a=4, b=65, c=4))
+2) or use their defaults by calling the function as is (my_function)
+3) or selecting which values get changed (my_function(23,43) - Will place values 23 and 43 into a and b)
+"""
+
 label.pack(side="right", expand=False)
 
 # Keeps window open
