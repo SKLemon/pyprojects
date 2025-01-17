@@ -40,12 +40,17 @@ calculate_button = tk.Button(text="Calculate", command=miles_to_km)
 # Created the entry window
 entry = tk.Entry(width=10)
 
-# grid postioning
-miles_label.grid(column=3, row=1, padx=PADDING_X, pady=PADDING_Y)
-km_label.grid(column=3, row=2, padx=PADDING_X, pady=PADDING_Y)
-km_answer.grid(column=2, row=2, padx=PADDING_X, pady=PADDING_Y)
-equal_to.grid(column=1, row=2, padx=PADDING_X, pady=PADDING_Y)
-calculate_button.grid(column=2, row=3, padx=PADDING_X, pady=PADDING_Y)
-entry.grid(column=2, row=1, padx=PADDING_X, pady=PADDING_Y)
+# grid positioning
+widgets = [
+    (miles_label, 3, 1),
+    (km_label, 3, 2),
+    (km_answer, 2, 2),
+    (equal_to, 1, 2),
+    (calculate_button, 2, 3),
+    (entry, 2, 1),
+]
+
+for widget, col, row in widgets:
+    widget.grid(column=col, row=row, padx=PADDING_X, pady=PADDING_Y)
 
 window.mainloop()
