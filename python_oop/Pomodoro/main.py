@@ -1,5 +1,6 @@
 #
-#  ! Created as part of BAIL repository on 01/17
+#  ! Created as part of BAIL repository on 01/17.
+# ! Officially paused work on Pomodoro
 import tkinter as tk
 
 # ---------------------------- CONSTANTS ------------------------------- #
