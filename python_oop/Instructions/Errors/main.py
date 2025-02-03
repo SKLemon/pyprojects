@@ -1,4 +1,5 @@
 # Created for BAIL repository 01/21
+
 # FileNotFound
 # with open("a_file.txt") as file:
 # file.read()
@@ -32,8 +33,29 @@ except FileNotFoundError:
     """
     file = open("a_file.txt", "w")
     file.write("something")
-except KeyError:
-    print("That key does not exist")
+
+# The below will take the actual error message and place it into a variable for further usage and processing
+except KeyError as error_message:
+    print(f"The {error_message} does not exist")
 else:
     content = file.read()
     print(content)
+
+finally:
+    file.close()  # type: ignore
+    print("File was closed")
+
+"""
+! Raising your own exceptions
+You can raise your own exception and issues to purposefully crash the code
+raise TypeError("This is an error that I made up")
+
+Why would you want to do this?
+- To catch logical errors where the code is sound, but the logic may not be
+
+    eg) standard_human_height = 50
+        standard human height being about 7m, but someone is capable of placing an integer of any value in the variable.
+        In the above example, the code is sound, but logically it is impossible for a human to be 50m tall.
+
+
+"""
