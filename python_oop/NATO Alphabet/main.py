@@ -24,9 +24,14 @@ phonetic_dict = {row.letter: row.code for (index, row) in nato_data.iterrows()}
 # I.E, User inputs "Hi", program spits out a list with ["Hotel", "India"]
 
 while True:
-    user_input = input("What is your input?: ").upper()
-    converted_word = [phonetic_dict[letter] for letter in user_input]
-    print(converted_word)
-    user_continue = input("More words? (Y/N)").lower()
+    try:
+        user_input = input("What is your input?: ").upper()
+        converted_word = [phonetic_dict[letter] for letter in user_input]
+    except KeyError:
+        print(f"Incorrect input. Try again with letters")
+        continue
+    else:
+        print(converted_word)
+        user_continue = input("More words? (Y/N)").lower()
     if user_continue == "n":
         break
