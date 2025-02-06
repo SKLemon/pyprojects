@@ -4,6 +4,8 @@ import smtplib, datetime, os
 import dotenv
 from email.message import EmailMessage
 
+# TODO: Implement logging
+
 # Loading the env file. Place this file in root or explicitly place the filepath
 message = EmailMessage()
 dotenv.load_dotenv()
@@ -48,9 +50,3 @@ except Exception as e:
 # Closing the server connection once no longer in use
 finally:
     server.quit()
-
-"""
-
-! DO NOT PUSH TO GITHUB UNLESS 100% SURE
-
- """
