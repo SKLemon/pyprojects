@@ -7,13 +7,12 @@ from email.message import EmailMessage
 from pathlib import Path
 import random
 
-# TODO: Path Module
-# TODO: Open file and read from it
-# TODO: Randomly select a line from "./quotes.txt"
-# TODO: Configure date/time to send the quote ranndomized
+# TODO [✔]: Path Module
+# TODO [✔]: Open file and read from it
+# TODO [✔]: Randomly select a line from "./quotes.txt"
+# TODO [✔]: Configure date/time to send the quote ranndomized
 
-now = dt.datetime.today()
-weekday = now.weekday()
+weekday = dt.datetime.today().weekday()
 
 # Only run if weekday is equal to a certain day
 if weekday == 6:
@@ -64,7 +63,7 @@ if weekday == 6:
         message["Subject"] = "Your weekly positivity quote!"
         message.set_content(random.choice(quotes))
         server.send_message(message)
-        logging.info("quote sent successfully")
+        logging.info("Quote sent successfully")
 
     # Error catching
     except KeyboardInterrupt:
