@@ -1,4 +1,4 @@
-# Created as a part of BAIl on 02/09
+# Created as a part of BAIL on 02/09
 
 """
 ? What are API's?
@@ -30,17 +30,12 @@ There is some information where there is no authentication required to GET the i
 But 'withdrawing' your 'money' would require authentication.
 
 ? Output
-- The output of these API endpoints is usually in the form of a JSON format.
-- JSON files are simple to transfer over the internet and recreate to a readable/easily viewable format once received in your program
+- The output of these API endpoints is usually in JSON format.
+- JSON files are simple to transfer over the internet and can be recreated to a readable/easily viewable format once received in your program
 """
 
 # Example of a simple API call below.
-# This will result in a response code (Similiar to Response 404 or the various others you may know of)
-
-import requests
-
-response = requests.get(url="http://api.open-notify.org/iss-now.json")
-response.raise_for_status()
+# This will result in a response code from the list below
 
 """
 ? Response Codes General Format -- More details available at : https://httpstatuses.io/
@@ -50,3 +45,21 @@ response.raise_for_status()
 4XX - Client Error
 5XX - Server Error
 """
+
+import requests
+
+# The below makes one API call to the URL and places it into a variable
+response = requests.get(url="http://api.open-notify.org/iss-now.json")
+
+# If there is an error in the url, or a server issue, or any other response that does not result in a succesful API call, the method below will raise an exception. It's a catch all.
+response.raise_for_status()
+
+# The below will return the json formatted response and place it into a variable for processing
+data = response.json()
+
+# The below pulls in specific information requested from the JSON (Latitude and Longitude)
+latitude = data["iss_position"]["latitude"]
+longitude = data["iss_position"]["longitude"]
+iss_position = (longitude, latitude)
+
+print(iss_position)
