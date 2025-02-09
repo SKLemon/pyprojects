@@ -54,17 +54,21 @@ if weekday == 6:
         # Opens the file, default read-only, to place contents into a list
         with open(file=Path("./quotes.txt")) as quote_file:
             quotes = [line.strip() for line in quote_file]
+        logging.info("Pulled quote successfully")
 
         # Prepares the message to be sent
+        logging.info("Preparing quote to send...")
         message = EmailMessage()
         message["To"] = SMTP_USERNAME
         message["From"] = SMTP_USERNAME
         message["Subject"] = "Your weekly positivity quote!"
         message.set_content(random.choice(quotes))
-        # server.send_message(message)
-        print(message)
+        server.send_message(message)
+        logging.info("quote sent successfully")
 
     # Error catching
+    except KeyboardInterrupt:
+        logging.warning("User Stopped/Cancelled. Keyboard Interrupt")
     except Exception as e:
         logging.warning(f"Error: {e}")
 
