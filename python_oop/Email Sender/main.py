@@ -1,52 +1,78 @@
 # Created for BAIL Repository 02/03
 
-import smtplib, datetime, os
-import dotenv
+import smtplib, datetime as dt
+import dotenv, os
+import logging as logging
 from email.message import EmailMessage
+from pathlib import Path
+import random
 
-# TODO: Implement logging
+# TODO [✔]: Path Module
+# TODO [✔]: Open file and read from it
+# TODO [✔]: Randomly select a line from "./quotes.txt"
+# TODO [✔]: Configure date/time to send the quote ranndomized
 
-# Loading the env file. Place this file in root or explicitly place the filepath
-message = EmailMessage()
-dotenv.load_dotenv()
-SMTP_SERVER = os.getenv("SMTP_SERVER")
-SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
-SMTP_USERNAME = os.getenv("SMTP_USERNAME")
-EMAIL_APP_PSWD = os.getenv("EMAIL_APP_PSWD")
+weekday = dt.datetime.today().weekday()
 
-try:
-    # Inilialize SMTP connection
-    print("Initializing SMTP server connection...")
-    server = smtplib.SMTP(host=SMTP_SERVER, port=SMTP_PORT)  # type: ignore
-    server.starttls()
-    print("Server auth successful.")
+# Only run if weekday is equal to a certain day
+if weekday == 6:
 
-    # Starting user authentication
-    print("Initializing user authentication...")
-    server.login(user=SMTP_USERNAME, password=EMAIL_APP_PSWD)  # type: ignore
-    print("User auth complete")
+    # * Setting default log configs
+    # OS-agnostic - This will create a log file "app.log" in the same folder this is ran
+    log_path = Path("./app.log")
+    logging.basicConfig(
+        filename=f"{log_path}",
+        encoding="utf-8",
+        datefmt="%m-%d %H:%M",
+        style="{",
+        level=logging.INFO,
+        format="{asctime}--{levelname}:{message}",
+    )
 
-    # Confirming message details loop
-    while True:
-        message["To"] = input("Enter receiver email: ").strip()
-        message["From"] = input("Enter sender email: ").strip()
-        message["Subject"] = input("Enter subject: ").strip()
-        message.set_content(input("Enter your message: ").strip())
+    # * Loading the env file. Create a .env and place this file in root directory
+    # * Only here to secure sensitive date - NEVER HARDCODE PERSONAL DATA INTO FILES THAT ARE SHARED/UPLOADED
+    dotenv.load_dotenv()  # type: ignore
+    SMTP_SERVER = os.getenv("SMTP_SERVER")
+    SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
+    SMTP_USERNAME = os.getenv("SMTP_USERNAME")
+    EMAIL_APP_PSWD = os.getenv("EMAIL_APP_PSWD")
+    logging.info("Server information loaded")
 
-        print(f"\n {message}")
-        confirm = input("Press Y to send the above or N to retype: ").strip().upper()
+    try:
+        # Inilialize SMTP connection
+        logging.info("Initializing SMTP server connection...")
+        server = smtplib.SMTP(host=SMTP_SERVER, port=SMTP_PORT)  # type: ignore
+        server.starttls()
+        logging.info("Server auth successful.")
 
-        if confirm == "Y":
-            print("Sending message")
-            server.send_message(message)
-            print("Message sent")
-            break
-        elif confirm == "N":
-            print("Resetting...")
-# Error catching
-except Exception as e:
-    print(f"Error: {e}")
+        # Starting user authentication
+        logging.info("Initializing user authentication...")
+        server.login(user=SMTP_USERNAME, password=EMAIL_APP_PSWD)  # type: ignore
+        logging.info("User auth complete")
 
-# Closing the server connection once no longer in use
-finally:
-    server.quit()
+        # Opens the file, default read-only, to place contents into a list
+        with open(file=Path("./quotes.txt")) as quote_file:
+            quotes = [line.strip() for line in quote_file]
+        logging.info("Pulled quote successfully")
+
+        # Prepares the message to be sent
+        logging.info("Preparing quote to send...")
+        message = EmailMessage()
+        message["To"] = SMTP_USERNAME
+        message["From"] = SMTP_USERNAME
+        message["Subject"] = "Your weekly positivity quote!"
+        message.set_content(random.choice(quotes))
+        server.send_message(message)
+        logging.info("Quote sent successfully")
+
+    # Error catching
+    except KeyboardInterrupt:
+        logging.warning("User Stopped/Cancelled. Keyboard Interrupt")
+    except Exception as e:
+        logging.warning(f"Error: {e}")
+
+    # Closing the server connection once no longer in use
+    finally:
+        logging.info("Closing server connection...")
+        server.quit()
+        logging.info("Server is now closed")
