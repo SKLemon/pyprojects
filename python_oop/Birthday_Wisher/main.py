@@ -14,6 +14,7 @@ Use responsibly, and when in doubt, add a personal touch — because even a robo
 # TODO []: Remember to get your .env file set up asap, as well as any logging functionality if needed
 # TODO []: Birthdays.csv file needs creating/updated
 # TODO []: Checking if today matches a date in the birthdays.csv
+# TODO []: Bonus points if you can get their exact age based on their date of birth
 # TODO []: If today's date matches a date in the csv file, then pick a random letter from the templates
 # TODO []: Change any and all placeholders in the email with actual data from csv file
 # TODO []: Send email
@@ -21,3 +22,5 @@ Use responsibly, and when in doubt, add a personal touch — because even a robo
 
 # Imports
 import pandas as pd
+import dotenv, os, smtplib, random
+from email.message import EmailMessage

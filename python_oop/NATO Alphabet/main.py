@@ -10,7 +10,7 @@ User types:
 VS Code
 
 Program shows:
-Victor, Sierra, Charlie, Oscar, Delta, Romeo
+Victor, Sierra, Charlie, Oscar, Delta, Echo
 """
 print(art)
 
