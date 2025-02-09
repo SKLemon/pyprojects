@@ -11,10 +11,10 @@ This program just ensures you never get hit with the "Oh no, I forgot!" panic ag
 Use responsibly, and when in doubt, add a personal touch — because even a robot knows that friendships shouldn't be fully automated.
 """
 
-# TODO []: Remember to get your .env file set up asap, as well as any logging functionality if needed
-# TODO []: Birthdays.csv file needs creating/updated
-# TODO []: Checking if today matches a date in the birthdays.csv
-# TODO []: Bonus points if you can get their exact age based on their date of birth
+# TODO []: .env file set up
+# TODO [✔]: Birthdays.csv file needs creating/updated
+# TODO [✔]: Checking if today matches a date in the birthdays.csv
+# TODO []: Implement personalized Birthday with Age. Ex(Happy 23rd Birthday!)
 # TODO []: If today's date matches a date in the csv file, then pick a random letter from the templates
 # TODO []: Change any and all placeholders in the email with actual data from csv file
 # TODO []: Send email
@@ -22,5 +22,29 @@ Use responsibly, and when in doubt, add a personal touch — because even a robo
 
 # Imports
 import pandas as pd
-import dotenv, os, smtplib, random
+import datetime as dt
+import logging as logging
+import os, smtplib, random
 from email.message import EmailMessage
+from dotenv import load_dotenv
+
+logging.basicConfig(filename="./app.log", style="{", level="INFO",format=)
+# Getting today's day and month
+today = dt.datetime.today()
+
+# Pulling info from csv
+birthday_data = pd.read_csv("./birthdays.csv")
+
+# Checking for matches
+matching = birthday_data[
+    (birthday_data.month == today.month) & (birthday_data.day == today.day)
+]
+
+if matching.empty:
+    logging.info("no birthdays today")
+else:
+    for _, row in matching.iterrows():
+        name = row["name"]
+        birth_year = row["year"]
+        age = today.year - birth_year
+        logging.info((f"Happy {age} Birthday {name}!"))
