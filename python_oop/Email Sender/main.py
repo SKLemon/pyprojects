@@ -53,8 +53,8 @@ if weekday == 6:
 
         # Opens the file, default read-only, to place contents into a list
         with open(file=Path("./quotes.txt")) as quote_file:
-            quotes = [random.choice(quote_file.readline())]
-        print(quotes)
+            quotes = [line.strip() for line in quote_file]
+
         # Prepares the message to be sent
         message = EmailMessage()
         message["To"] = SMTP_USERNAME
