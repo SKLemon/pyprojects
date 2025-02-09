@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Created as a part of BAIL on 02/09
+=======
+# Created as a part of BAIl on 02/09
+>>>>>>> birthday_wisher
 
 """
 ? What are API's?
@@ -30,12 +34,26 @@ There is some information where there is no authentication required to GET the i
 But 'withdrawing' your 'money' would require authentication.
 
 ? Output
+<<<<<<< HEAD
 - The output of these API endpoints is usually in JSON format.
 - JSON files are simple to transfer over the internet and can be recreated to a readable/easily viewable format once received in your program
 """
 
 # Example of a simple API call below.
 # This will result in a response code from the list below
+=======
+- The output of these API endpoints is usually in the form of a JSON format.
+- JSON files are simple to transfer over the internet and recreate to a readable/easily viewable format once received in your program
+"""
+
+# Example of a simple API call below.
+# This will result in a response code (Similiar to Response 404 or the various others you may know of)
+
+import requests
+
+response = requests.get(url="http://api.open-notify.org/iss-now.json")
+response.raise_for_status()
+>>>>>>> birthday_wisher
 
 """
 ? Response Codes General Format -- More details available at : https://httpstatuses.io/
@@ -45,6 +63,7 @@ But 'withdrawing' your 'money' would require authentication.
 4XX - Client Error
 5XX - Server Error
 """
+<<<<<<< HEAD
 
 import requests
 
@@ -63,3 +82,5 @@ longitude = data["iss_position"]["longitude"]
 iss_position = (longitude, latitude)
 
 print(iss_position)
+=======
+>>>>>>> birthday_wisher
