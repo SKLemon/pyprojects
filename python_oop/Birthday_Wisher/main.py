@@ -20,7 +20,7 @@ Use responsibly, and when in doubt, add a personal touch — because even a robo
 # TODO []: Send email
 # TODO []:
 
-# Imports
+
 import pandas as pd
 import datetime as dt
 import logging as logging
@@ -28,25 +28,36 @@ import os, smtplib, random
 from email.message import EmailMessage
 from dotenv import load_dotenv
 
+# Loads env, sets logger configs, the birthday file, and gets today's date
 load_dotenv(dotenv_path="./.env", verbose=True)
-
 logging.basicConfig(filename="./app.log", style="{", level="INFO")
-# Getting today's day and month
 today = dt.datetime.today()
-
-# Pulling info from csv
 birthday_data = pd.read_csv("./birthdays.csv")
 
-# Checking for matches
-matching = birthday_data[
-    (birthday_data.month == today.month) & (birthday_data.day == today.day)
-]
 
-if matching.empty:
-    logging.info("no birthdays today")
-else:
-    for _, row in matching.iterrows():
-        name = row["name"]
-        birth_year = row["year"]
-        age = today.year - birth_year
-        logging.info((f"Happy {age} Birthday {name}!"))
+def birthday_info(today, birthdays):
+    # Checking for matches
+    matching = birthdays[
+        (birthdays.month == today.month) & (birthdays.day == today.day)
+    ]
+
+    if matching.empty:
+        logging.info("no birthdays today")
+    else:
+        for _, row in matching.iterrows():
+            name = row["name"]
+            birth_year = row["year"]
+            age = today.year - birth_year
+            return name, birth_year, age
+
+    # Reads the files and places them into a list for selection
+    # Since the template files are in a "template{num}" format, with num being 1,2 or 3
+
+    num = random.randint(1, 3)
+    with open(file=f"./templates/template{num}.txt", mode="r") as file:
+        message = file.read()
+
+    print(message)
+
+
+birthday_info(today, birthday_data)
