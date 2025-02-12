@@ -28,6 +28,8 @@ import os, smtplib, random
 from email.message import EmailMessage
 from dotenv import load_dotenv
 
+load_dotenv(dotenv_path="./.env", verbose=True)
+
 logging.basicConfig(filename="./app.log", style="{", level="INFO")
 # Getting today's day and month
 today = dt.datetime.today()
