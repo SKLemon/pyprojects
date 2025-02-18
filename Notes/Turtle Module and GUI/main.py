@@ -69,7 +69,7 @@ MORE INFO: https://docs.python.org/3/library/venv.html
 
 """
 
-The below is a more efficient and Pythonic
+The below is more efficient and Pythonic
 
 def create_shape(sides, length = 100):
     angle = 360 / sides
@@ -109,7 +109,8 @@ def random_colours():
 
     """
     UPDATE: Got DISPLAY VAR working.
-    Look into XLaunch and XMing to solve the issue on your end if your development is hosted on a different machine than the one you are typing on.
+    Look into XLaunch and XMing to solve the issue on your end if your development is
+    hosted on a different machine than the one you are typing on.
     Below function remains due to my opinion that randomizing colours looks cooler
     """
     for i in range(1, 21):

@@ -13,8 +13,7 @@ The repository is organized into the following sections:
 
 1. **Projects** - Larger, structured applications demonstrating complex problem-solving and implementation.
 2. **Scripts** - Standalone scripts for automation, data processing, or small utilities.
-3. **Lessons Learned** - Notes, insights, and explanations of concepts encountered during development. [TBD]
-4. **Resources** - Links and references that have been valuable during the learning journey. [TBD]
+3. **Notes** - Notes, insights, and explanations of concepts encountered during development.
 
 ## Getting Started
 To explore or contribute to this repository:
@@ -38,4 +37,3 @@ Contributions are welcome! If you have improvements, ideas, or additional script
 For any questions or discussions, reach out via GitHub issues or email.
 
 ---
-
