@@ -23,6 +23,7 @@ HINTS PROVIDED BY THE CHALLENGE:
 
 
 import pandas as pd
+from pathlib import Path
 from turtle import Turtle, Screen
 
 # Setting initial var
@@ -66,9 +67,9 @@ while len(correct_guesses) < len(states_list):
             for each_state in states_list
             if each_state not in correct_guesses
         ]
-        pd.DataFrame(missing_states).to_csv(
-            "/home/snowyp/repos/pyprojects/python_oop/US States/states_to_learn.csv"
-        )
+        # Save the remaining states to a CSV file in the current directory
+        export_path = Path(__file__).parent / "states_to_learn.csv"
+        pd.DataFrame(missing_states).to_csv(export_path)
         break
 
 screen.exitonclick()
