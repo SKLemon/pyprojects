@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-ALIGN = "Center"
+ALIGN = "center"
 FONT = ("Arial", 20, "normal")
 
 
