@@ -1,4 +1,6 @@
-""" This file contains the code for the paddle class. All attributes and methods, including the physics, the keys and button presses will be contained here """
+"""Module defining the :class:`Paddle` used in the Pong game.
+
+The class manages paddle movement and visual attributes only."""
 
 from turtle import Turtle, mode
 
