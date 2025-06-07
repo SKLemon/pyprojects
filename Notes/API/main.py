@@ -51,7 +51,7 @@ import requests
 # The below makes one API call to the URL and places it into a variable
 response = requests.get(url="http://api.open-notify.org/iss-now.json")
 
-# If there is an error in the url, or a server issue, or any other response that does not result in a succesful API call, the method below will raise an exception. It's a catch all.
+# If there is an error in the url, or a server issue, or any other response that does not result in a successful API call, the method below will raise an exception. It's a catch all.
 response.raise_for_status()
 
 # The below will return the json formatted response and place it into a variable for processing
