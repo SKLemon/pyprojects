@@ -19,11 +19,11 @@ The repository is organized into the following sections:
 To explore or contribute to this repository:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/BAIL-Repository.git
+   https://github.com/SKLemon/pyprojects.git
    ```
 2. Navigate to the directory:
    ```bash
-   cd BAIL-Repository
+   cd pyprojects
    ```
 3. Run a script or project:
    ```bash
